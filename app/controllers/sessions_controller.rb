@@ -1,21 +1,21 @@
 class SessionsController < ApplicationController
-  def index
-  end
+  
 
   def new
   end
 
-  def show
-    @user = User.find(params[:id])
+  def index
+    @user = User.find_by(email: current_user.email) unless current_user.nil?
   end
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
+      session[:user_id] = user.id
       # Log the user in and redirect to the user's show page.
       sign_in user
       current_user
-      render 'show'
+      redirect_to root_url
     else
       # Create an error message.
       flash.now.alert = 'Invalid email/password combination'
@@ -25,8 +25,13 @@ class SessionsController < ApplicationController
   end
 
 
-  def delete
-    log_out if @current_user == nil
+  def destroy
+    @current_user = nil
+    session[:user_id] = nil
+    cookies.delete(:user_id)
+    cookies.delete(:remember_token)
+    #forget
+    render 'new' 
   end
 
 end

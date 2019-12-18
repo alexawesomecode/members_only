@@ -1,1 +1,20 @@
-<h1> Sign-in </h1>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+      <% if  !@user.nil? %>
+        <%= @user.name %> <br>
+          <%= @user.email %> <br>
+          
+              <%= link_to "Log Out", session_path("current"), method: "delete" %>
+      
+      <% else %>
+
+      <h1>Please Log in</h1>
+       <%= link_to "Log in", new_session_path %>
+      <% end %>
+      </h1>
+    </section>
+  </aside>
+</div>
