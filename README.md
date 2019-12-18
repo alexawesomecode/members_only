@@ -14,6 +14,14 @@ In this project we only used Ruby on Rails and HTML.
 
 Our project can be found in https://github.com/alexawesomecode/members_only.
 
+## Links
+
+* Index:         http://localhost:3000/
+* Login:         http://localhost:3000/session/new
+* Current user:  http://localhost:3000/session/
+* New post:      http://localhost:3000/posts/new
+* List of posts: http://localhost:3000/posts
+
 ## Contributors
 
 Alejandro Andres - [GitHub](https://github.com/alexawesomecode) - @alexawesomecode

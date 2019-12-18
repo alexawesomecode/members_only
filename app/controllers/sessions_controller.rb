@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
-
-  def new
-  end
+  def new; end
 
   def index
     @user = User.find_by(email: current_user.email) unless current_user.nil?
@@ -9,7 +7,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+    if user&.authenticate(params[:session][:password])
       session[:user_id] = user.id
       # Log the user in and redirect to the user's show page.
       sign_in user
@@ -22,14 +20,11 @@ class SessionsController < ApplicationController
     end
   end
 
-
   def destroy
     @current_user = nil
     session[:user_id] = nil
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
-    #forget
     render 'new'
   end
-
 end
