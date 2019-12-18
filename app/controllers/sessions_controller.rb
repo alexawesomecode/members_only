@@ -2,9 +2,11 @@ class SessionsController < ApplicationController
   def index
   end
 
-
   def new
-   # @session = session[:blank]
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   def create
@@ -13,20 +15,18 @@ class SessionsController < ApplicationController
       # Log the user in and redirect to the user's show page.
       sign_in user
       current_user
-      redirect_to root_path
+      render 'show'
     else
       # Create an error message.
-      flash.now[:danger] = 'Invalid email/password combination' # Not quite right!
+      flash.now.alert = 'Invalid email/password combination'
       # redirect_to root_url
       render 'new'
     end
   end
 
-  
+
   def delete
-
-	  log_out if @current_user == nil
-
-end
+    log_out if @current_user == nil
+  end
 
 end
