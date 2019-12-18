@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  
 
   def new
   end
@@ -19,7 +18,6 @@ class SessionsController < ApplicationController
     else
       # Create an error message.
       flash.now.alert = 'Invalid email/password combination'
-      # redirect_to root_url
       render 'new'
     end
   end
@@ -31,7 +29,7 @@ class SessionsController < ApplicationController
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
     #forget
-    render 'new' 
+    render 'new'
   end
 
 end

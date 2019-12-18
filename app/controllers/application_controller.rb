@@ -24,5 +24,10 @@ class ApplicationController < ActionController::Base
     user == current_user
   end
 
+  private
+
+    def signed_in?
+      return !current_user.nil?
+    end
 
 end
