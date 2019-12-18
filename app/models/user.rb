@@ -2,6 +2,7 @@ class User < ApplicationRecord
   attr_accessor :activation_token
   has_secure_password
   before_create :remember
+  has_many :posts
 
   # Returns the hash digest of the given string.
   def User.digest(string)
