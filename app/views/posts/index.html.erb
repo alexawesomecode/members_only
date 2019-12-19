@@ -1,0 +1,10 @@
+<h1> List of All Posts: </h1>
+
+<% @posts.each do |p|%>
+<ul>
+<li> content: <%= p.content %>,  </li>
+<% if @logged_in%>
+author: <%= User.find_by(id: p.user_id).name  %>
+<% end %>
+</ul>
+<% end%>
