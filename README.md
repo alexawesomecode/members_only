@@ -18,6 +18,7 @@ Our project can be found in https://github.com/alexawesomecode/members_only.
 
 * Index:         http://localhost:3000/
 * Login:         http://localhost:3000/sessions/new
+* Signup:        http://localhost:3000/user/new
 * Current user:  http://localhost:3000/sessions/
 * New post:      http://localhost:3000/posts/new
 * List of posts: http://localhost:3000/posts

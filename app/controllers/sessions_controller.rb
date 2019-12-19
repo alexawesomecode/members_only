@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       # Log the user in and redirect to the user's show page.
       sign_in user
       current_user
-      redirect_to root_url
+      redirect_to posts_path
     else
       # Create an error message.
       flash.now[:alert] = 'Invalid email/password combination'
@@ -25,6 +25,6 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
-    render 'new'
+    redirect_to root_url
   end
 end
